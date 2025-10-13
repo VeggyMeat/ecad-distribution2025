@@ -14,9 +14,16 @@ div:
     # ...
 
     # do your work
-    # example of printing inputs a0 and a1
-    DEBUG_PRINT a0
-    DEBUG_PRINT a1
+    li t0, 0
+    beq a1, zero, exit  # if divisor is 0, return 0
+loop:
+    sub a0, a0, a1  # a0 = a0 - a1
+    blt t0, t1, exit 
+    add t0, t0, 1 # t0 = t0 + 1
+    beq a0, a0, loop
+exit: 
+    lw a1, 0(a0) # load remainder
+    lw a0, 0(t0) # load quotient
 
     # load every register you stored above
     lw   ra, 28(sp)
