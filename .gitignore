@@ -45,3 +45,5 @@
 
 # email history files
 **/*~
+
+obj_dir/
